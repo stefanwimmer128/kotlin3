@@ -8,6 +8,7 @@ To use Kotlin³ in your project add the following code to your `build.gradle`:
 
 ``` groovy
 repositories {
+    jcenter()
     maven {
         url = "https://dl.bintray.com/stefanwimmer128/maven"
     }
