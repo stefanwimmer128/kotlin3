@@ -4,7 +4,7 @@ Kotlin³ provides an easy-to-use Kotlin Language Adapter and helpers to develop 
 
 ## How to use Kotlin³ in your project?
 
-To use Kotlin³ in your project add the following code to yout `build.gradle`:
+To use Kotlin³ in your project add the following code to your `build.gradle`:
 
 ``` groovy
 repositories {
@@ -21,9 +21,11 @@ dependencies {
 } 
 ```
 
+And create your Mod like this:
+
 ``` kotlin
-@Mod(modid = "your-mod", modLanguageAdapter = "eu.stefanwimmer128.kotlin3.KotlinLanguageAdapter")
+@Mod(modid = "your-mod, modLanguageAdapter = "eu.stefanwimmer128.kotlin3.api.KotlinLanguageAdapter")
 object YourMod {
-    // 
+    // put your code here
 }
 ```
