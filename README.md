@@ -15,9 +15,9 @@ repositories {
 
 dependencies {
     // compile against Kotlin³ API
-    compileOnly "eu.stefanwimmer128.kotlin3:kotlin3-api:1.0.0"
+    provided "eu.stefanwimmer128.kotlin3:kotlin3-api:1.0.0"
     // at runtime include full Kotlin³ mod
-    runtimeOnly "eu.stefanwimmer128.kotlin3:kotlin3:1.0.0"
+    runtime "eu.stefanwimmer128.kotlin3:kotlin3:1.0.0"
 } 
 ```
 
