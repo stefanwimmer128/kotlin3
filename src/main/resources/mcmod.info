@@ -1,0 +1,19 @@
+
+[
+    {
+        "modid": "kotlin3",
+        "name": "Kotlin³",
+        "description": "Kotlin³ provides an easy-to-use Kotlin Language Adapter and helpers to develop Minecraft Mods in Kotlin.",
+        "version": "${version}",
+        "mcversion": "${mcversion}",
+        "url": "https://minecraft.curseforge.com/projects/kotlin3",
+        "updateUrl": "https://raw.githubusercontent.com/stefanwimmer128/kotlin3/master/versions.json",
+        "authorList": [
+            "Stefan Wimmer <info@stefanwimmer128.eu>"
+        ],
+        "credits": "Copyright (c) 2018, Stefan Wimmer <info@stefanwimmer128.eu>",
+        "logoFile": "logo.png",
+        "screenshots": [],
+        "dependencies": []
+    }
+]
