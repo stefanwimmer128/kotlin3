@@ -8,7 +8,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 object Config {
     val modid = "kotlin3"
-    val version = "1.0.0"
+    val version = "1.1.0"
     val type = "release"
     
     val minecraft = "1.12.2"
