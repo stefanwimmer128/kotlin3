@@ -1,0 +1,5 @@
+$dokka.format:html
+$dokka.linkExtension:html
+$dokka.location:eu.stefanwimmer128.kotlin3.api$creativeTab#net.minecraft.block.Blockeu.stefanwimmer128.kotlin3.api/net.minecraft.block.-block/creative-tab.html
+eu.stefanwimmer128.kotlin3
+eu.stefanwimmer128.kotlin3.api
