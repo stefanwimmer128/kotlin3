@@ -18,7 +18,7 @@ dependencies {
     // compile against Kotlin³ API
     provided "eu.stefanwimmer128.kotlin3:kotlin3-api:${version}"
     // at runtime include full Kotlin³ mod
-    runtime "eu.stefanwimmer128.kotlin3:kotlin3:${version}"
+    runtimeOnly "eu.stefanwimmer128.kotlin3:kotlin3:${version}"
 } 
 ```
 
