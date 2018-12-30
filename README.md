@@ -30,3 +30,5 @@ object YourMod {
     // put your code here
 }
 ```
+
+Additional documentation can be found [here](https://stefanwimmer128.github.io/kotlin3/).

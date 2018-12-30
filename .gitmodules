@@ -1,0 +1,4 @@
+[submodule "docs"]
+	path = docs
+	url = git@github.com:stefanwimmer128/kotlin3.git
+	branch = gh-pages

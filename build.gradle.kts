@@ -1,9 +1,12 @@
 import com.github.jengelman.gradle.plugins.shadow.tasks.ConfigureShadowRelocation
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import com.matthewprenger.cursegradle.CurseProject
+import java.net.URL
 import net.minecraftforge.gradle.user.IReobfuscator
 import net.minecraftforge.gradle.user.ReobfMappingType
 import net.minecraftforge.gradle.user.UserBaseExtension
+import org.jetbrains.dokka.DokkaConfiguration
+import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 object Config {
@@ -34,6 +37,7 @@ buildscript {
     
     dependencies {
         classpath("net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT")
+        classpath("org.jetbrains.dokka:dokka-gradle-plugin:0.9.17")
     }
 }
 
@@ -46,6 +50,7 @@ plugins {
 }
 
 apply(plugin = "net.minecraftforge.gradle.forge")
+apply(plugin = "org.jetbrains.dokka")
 
 group = "eu.stefanwimmer128.kotlin3"
 version = Config.version
@@ -160,6 +165,36 @@ tasks {
     withType<ShadowJar> {
         configurations = listOf(project.configurations.compile)
     }
+    
+    val dokka = getByName<DokkaTask>("dokka") {
+        moduleName = "${Config.modid}_${Config.minecraft}-${Config.version}"
+        
+        jdkVersion = 8
+        
+        externalDocumentationLinks.add((DokkaConfiguration.ExternalDocumentationLink.Builder().apply {
+            url = URL("https://skmedix.github.io/ForgeJavaDocs/javadoc/forge/1.11.2-13.20.0.2228/")
+        }).build())
+    }
+    
+    val copyDocs = create<Copy>("copyDocs") {
+        from(dokka.outputDirectory)
+        into("docs")
+        
+        dependsOn(dokka)
+    }
+    
+    create<Zip>("docsZip") {
+        from(dokka.outputDirectory)
+        
+        archiveName = "${Config.modid}_${Config.minecraft}-${Config.version}-docs.zip"
+        classifier = "docs"
+        
+        dependsOn(dokka)
+    }
+    
+    getByName("build") {
+        dependsOn(copyDocs)
+    }
 }
 
 artifacts {
@@ -167,6 +202,7 @@ artifacts {
     add("archives", tasks["apiThinJar"])
     add("archives", tasks["deobfJar"])
     add("archives", tasks["deobfThinJar"])
+    add("archives", tasks["docsZip"])
 }
 
 curseforge {
@@ -183,6 +219,7 @@ curseforge {
         
         mainArtifact(tasks["shadowJar"])
         
+        addArtifact(tasks["docsZip"])
         addArtifact(tasks["sourceJar"])
         addArtifact(tasks["deobfJar"])
         addArtifact(tasks["apiJar"])
@@ -229,6 +266,7 @@ publishing {
                     classifier = null
                 }
                 artifact(tasks["sourceJar"])
+                artifact(tasks["docsZip"])
                 
                 pom.withGroovyBuilder {
                     "setName"("Kotlin³")
